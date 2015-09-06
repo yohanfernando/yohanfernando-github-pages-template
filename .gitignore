@@ -1,2 +1,8 @@
+.idea
+
 _site
 .sass-cache
+
+_bower_components
+node_modules
+Gemfile.lock
