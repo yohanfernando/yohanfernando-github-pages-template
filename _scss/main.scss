@@ -1,0 +1,19 @@
+/*
+  Copyright 2015, Yohan Fernando (@yohanfernando)
+
+  This would import all the related partials to compile the css file for the site..
+*/
+
+//======================
+// Customisations
+//======================
+
+@import 'variables';
+
+
+//======================
+// Foundation related
+//======================
+
+@import "foundation";
+@import "normalize";

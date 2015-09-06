@@ -1,0 +1,25 @@
+{
+  "name": "yohanfernando",
+  "version": "1.0.0",
+  "description": "Base blog setup by Yohan Fernando (yohanfernando.github.io)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yohanfernando/yohanfernando.gitbub.io.git"
+  },
+  "homepage": "https://yohanfernando.github.com/",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo \"npm-install complete, proceeding to bower/gulp...\" && bower install && gulp copy-libraries"
+  },
+  "author": "Yohan Fernando <yohandmf@gmail.com>",
+  "license": "ISC"
+}

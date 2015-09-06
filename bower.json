@@ -1,0 +1,20 @@
+{
+  "name": "yohanfernando",
+  "version": "0.0.0",
+  "authors": [
+    "Yohan Fernando <yohandmf@gmail.com>"
+  ],
+  "description": "Base blog setup by Yohan Fernando (yohanfernando.github.io)",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  },
+  "homepage": "index.html"
+}
