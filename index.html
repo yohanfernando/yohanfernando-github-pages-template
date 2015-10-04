@@ -1,23 +1,53 @@
 ---
-layout: default
+layout: home
 ---
 
-<div class="home">
+<div class="row">
+    <div class="small-12 large-7 columns">
+        {% for post in site.posts limit:1 %}
+        <a href="{{ post.url | prepend: site.baseurl }}">
+            <h3>{{ post.title }}</h3>
+        </a>
 
-  <h1 class="page-heading">Posts</h1>
+        <h4>
+            <small>
+                {% include templates/format_date.html post_date=post.date %}
+            </small>
+        </h4>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        {% for category in post.categories %}
+        {% include templates/tag.html tag=category%}
+        {% endfor %}
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+        <div class="separator"></div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+        {{ post.content }}
 
+        <h5>
+            <a href="{{ post.url | prepend: site.baseurl }}" class="button small radius">
+                Read full article</a>
+        </h5>
+        {% endfor %}
+    </div>
+    <div class="small-12 large-4 large-offset-1 columns panel about-me">
+        {% for p in site.html_pages %}
+        {% if p.url == '/about/' %}
+        <a href="{{p.url}}" target="_blank">
+            <h3>{{ p.title }}</h3>
+        </a>
+
+        <div class="separator"></div>
+        {% if p.content contains "<!-- more -->" %}
+        {{ p.excerpt | strip_html }}
+        {% else %}
+        {{ p.content | strip_html | truncatewords:100 }}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
+
+<div class="separator"></div>
+
+{% include templates/read_more_articles.html show=3 skip=1 currentUrl=page.url %}
+

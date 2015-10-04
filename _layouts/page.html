@@ -1,14 +1,50 @@
 ---
 layout: default
 ---
+
+<!-- todo : add micro data -->
 <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
+    <div class="row single-post">
+        <div class="small-12 columns">
 
-  <article class="post-content">
-    {{ content }}
-  </article>
+            <div class="row">
+                <div class="small-12 columns">
 
+                    <h2>{{ page.title }}</h2>
+
+                    <i class="fa fa-clock-o"></i>
+                    {% include templates/format_date.html post_date=page.date %}
+
+                    <div class="separator"></div>
+
+                    {{ content }}
+
+                </div>
+            </div>
+
+            <div class="row post-footer">
+                <div class="small-12 medium-5 columns author">
+                    <p>Authored by: {{ page.author }}</p>
+
+                    <p style="font-weight: 500;">Published on:
+                        {% include templates/format_date.html post_date=page.date %}</p>
+                </div>
+                <div class="small-12 medium-7 columns small-text-left medium-text-right">
+
+                    <div class="row">
+                        <div class="small-12 columns tags">
+                            {% for category in page.categories %}
+                            {% include templates/tag.html tag=category%}
+                            {% endfor %}
+                        </div>
+                        <div class="small-12 columns">
+                            {% include templates/share.html post=page %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

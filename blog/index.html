@@ -1,0 +1,17 @@
+---
+layout: home
+---
+
+<div class="row">
+    <div class="small-12 columns">
+        <ul class="small-block-grid-1 medium-block-grid-3">
+            {% for post in site.posts %}
+            <li>
+
+                {% include templates/sub_article.html subarticle=post %}
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

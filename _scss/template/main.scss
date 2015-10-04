@@ -1,0 +1,12 @@
+/*
+  Copyright 2015, Yohan Fernando (@yohanfernando)
+
+  This contain all the customisations for the template from base foundation file.
+
+  The order of styles applied is very important.
+*/
+
+//Import Template components
+@import 'header';
+@import 'content';
+@import 'footer';

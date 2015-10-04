@@ -30,6 +30,13 @@ var rename = require('gulp-rename');
 gulp.task('copy-libraries', function () {
     gulp.src(['./_bower_components/foundation/scss/foundation/**'])
         .pipe(gulp.dest('_scss/foundation'));
+
+    gulp.src(['./_bower_components/font-awesome/scss/**'])
+        .pipe(gulp.dest('_scss/font-awesome'));
+
+    gulp.src(['./_bower_components/font-awesome/fonts/**'])
+        .pipe(gulp.dest('assets/fonts'));
+
 });
 
 /**
@@ -59,15 +66,28 @@ gulp.task('scss', function () {
     return gulp.src('_scss/main.scss')
         .pipe(sass({
             includePaths: ['scss'],
-            onError: browserSync.notify
+            onError: browserSync.notify,
+            errLogToConsole: true
         }))
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
         .pipe(rename('style.css'))
         .pipe(gulp.dest('_site/assets/css/'))
-        .pipe(browserSync.reload({stream: true}))
-        .pipe(notify({
-            message: "SCSS files compiled & injected to '_site/assets/css/' folder."
-        }));
+        .pipe(gulp.dest('assets/css/'))//added to assist in development auto complete
+        //.pipe(browserSync.reload({stream: true}))
+        //.pipe(notify({
+        //    message: "SCSS files compiled & injected to '_site/assets/css/' folder."
+        //}))
+        ;
+});
+
+gulp.task('copy-dev-files', function () {
+    return gulp.src(['./dev-home.html','./dev-single-post.html'])
+        .pipe(gulp.dest('./_site/'))
+        //.pipe(browserSync.reload({stream: true}))
+        //.pipe(notify({
+        //    message: "index-dev compiled & injected."
+        //}))
+        ;
 });
 
 /**
@@ -76,8 +96,10 @@ gulp.task('scss', function () {
  */
 gulp.task('watch', ['jekyll-build'], function () {
 
-    gulp.watch('_scss/**/*.scss', ['scss']);
-    gulp.watch(['index.html', '_config.yml', '_includes/*', 'layouts/*', '_posts/*'], ['jekyll-rebuild']);
+    gulp.watch(['_scss/**/*.scss'], ['scss']).on('change', browserSync.reload);
+    gulp.watch(['dev-home.html','dev-single-post.html'], ['copy-dev-files']).on('change', browserSync.reload);
+    gulp.watch(['index.html', '_config.yml', 'blog/**','_includes/**', '_layouts/**', '**.md'],
+        ['jekyll-rebuild']).on('change', browserSync.reload);
 });
 
 /**
@@ -88,6 +110,7 @@ gulp.task('watch', ['jekyll-build'], function () {
 gulp.task('serve', ['watch'], function () {
 
     browserSync.init({
+        injectChanges: true,
         server: "_site"
     });
 
