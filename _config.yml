@@ -1,6 +1,6 @@
 # Site settings
 title:    Blog title
-baseurl: "/"
+baseurl: "http://your-github-repo.github.io"
 
 description: > #
  You can add a description to this section to explain the blog or your self.
