@@ -1,0 +1,9 @@
+<!-- Out put the date as dd<st|nd|rd|th> mmm yyyy format -->
+{% assign d = include.post_date | date: "%-d" %}
+{% case d %}
+{% when '1' or '21' or '31' %}{{d}}<sup>st</sup>
+{% when '2' or '22' %}{{d}}<sup>nd</sup>
+{% when '3' or '23' %}{{d}}<sup>rd</sup>
+{% else %}{{d}}<sup>th</sup>
+{% endcase %}
+{{ include.post_date | date: "%B %Y" }}

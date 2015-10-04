@@ -1,0 +1,24 @@
+
+<a href="{{ include.subarticle.url | prepend: site.baseurl }}">
+    <h4>{{ include.subarticle.title }}</h4>
+</a>
+
+<h4>
+    <small>{% include templates/format_date.html post_date=include.subarticle.date %}</small>
+</h4>
+
+{% for category in include.subarticle.categories %}
+{% include templates/tag.html tag=category%}
+{% endfor %}
+
+<div class="separator"></div>
+
+<p>
+    {% if include.subarticle.content contains "<!-- more -->" %}
+    {{ include.subarticle.excerpt | strip_html }}
+    {% else %}
+    {{ include.subarticle.content | strip_html | truncatewords:30 }}
+    {% endif %}
+</p>
+
+<a href="{{ include.subarticle.url | prepend: site.baseurl }}" class="read-sub-articles">Read</a>

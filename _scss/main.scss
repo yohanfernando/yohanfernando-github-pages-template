@@ -1,19 +1,31 @@
 /*
   Copyright 2015, Yohan Fernando (@yohanfernando)
 
-  This would import all the related partials to compile the css file for the site..
+  This would import all the related partials to compile the css file for the site.
 */
 
 //======================
-// Customisations
+// Add normalise.css to correct cross-browser inconsistencies
 //======================
-
-@import 'variables';
-
-
-//======================
-// Foundation related
-//======================
-
-@import "foundation";
 @import "normalize";
+
+//======================
+// Import Foundation - a direct checkout from the repo
+//======================
+@import "variables";
+
+//======================
+// Import Foundation - installed via bower
+//======================
+@import "foundation";
+
+//======================
+// Import Font-awesome - installed via bower
+//======================
+@import "font-awesome/font-awesome";
+
+//======================
+// Import the Blog Template - this will have all component partials of the template.
+// Note: template is built based on the foundation framework
+//======================
+@import "template/main";

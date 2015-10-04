@@ -1,0 +1,45 @@
+/*
+  Copyright 2015, Yohan Fernando (@yohanfernando)
+
+  This contains all the scss customisations to the footer section.
+*/
+
+.read-all-articles-button {
+  @extend button;
+  @extend .large;
+  @extend .radius;
+  @extend .expand;
+
+  margin-top: 3em;
+}
+
+.footer {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2f2f2;
+  padding: 1em;
+  border: 1px solid $separator-border-color;
+  border-right-width: 0;
+  border-left-width: 0;
+
+  @media #{$screen} and (max-width: #{upper-bound($small-range)}) {
+    & i {
+      padding: .3em .3em .3em 0;
+    }
+  }
+
+  @media #{$medium-up} {
+    & i {
+      padding: .3em 1em .3em 0;
+    }
+  }
+
+  .about-blub p {
+    color: $blockquote-font-color;
+  }
+
+  .copyright {
+    margin-top: 1em;
+  }
+
+}

@@ -1,0 +1,49 @@
+<!-- Set the share url -->
+{% assign share_url = include.post.url | prepend: site.baseurl %}
+
+<!-- Set share title -->
+{% if include.post.title %}
+{% assign share_title = include.post.title | strip_html %}
+{% else %}
+{% assign share_title = site.title | strip_html %}
+{% endif %}
+
+<!-- Set share text -->
+{% if include.post.content contains "<!-- more -->" %}
+{% assign share_text = include.post.excerpt | strip_html %}
+{% elsif include.post.content %}
+{% assign share_text = include.post.content | strip_html | truncatewords:30 %}
+{% else %}
+{% assign share_text = site.description | strip_html | truncatewords:30 %}
+{% endif %}
+
+<!-- hashtags -->
+{% for category in include.post.categories %}
+{% if share_hashtags %}
+{% assign share_hashtags = share_hashtags |  append: ',' %}
+{% endif %}
+{% assign share_hashtags = category | prepend: share_hashtags %}
+{% endfor %}
+
+
+<div class="share-posts">
+    <strong>Share this post</strong><br/>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank">
+        <i class="fa fa-facebook-square fa-2x facebook"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_text }}&hashtags={{ share_hashtags }}"
+       target="_blank">
+        <i class="fa fa-twitter-square fa-2x twitter"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ share_url }}&title={{ share_title }}&summary={{ share_text }}"
+       target="_blank">
+        <i class="fa fa-linkedin-square fa-2x linkedin"></i>
+    </a>
+    <a href="https://pinterest.com/pin/create/button/?url={{ share_url }}&media={{ share_url }}&description={{ share_text }}"
+       target="_blank">
+        <i class="fa fa-pinterest-square fa-2x pinterest"></i>
+    </a>
+    <a href="https://plus.google.com/share?url={{ share_url }}" target="_blank">
+        <i class="fa fa-google-plus-square fa-2x google-plus"></i>
+    </a>
+</div>

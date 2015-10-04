@@ -1,0 +1,35 @@
+<!-- Check if skip is assigned, if not make posts_offset=0 -->
+{% if include.skip %}
+{% assign posts_offset = include.skip %}
+{% else %}
+{% assign posts_offset = 0 %}
+{% endif %}
+
+<!-- Check if no of items to show is assigned, if not make posts_limit=3 -->
+{% if include.show %}
+{% assign posts_limit = include.show %}
+{% else %}
+{% assign posts_limit = 3 %}
+{% endif %}
+
+<!-- Check if if the current post appears in the posts list, if so increment the posts limit -->
+{% for sub_article in site.posts offset:posts_offset limit:posts_limit %}
+{% if include.currentUrl and include.currentUrl == sub_article.url %}
+{% assign posts_limit=posts_limit | plus:1 %}
+{% endif %}
+{% endfor %}
+
+
+<div class="row">
+    {% for sub_article in site.posts offset:posts_offset limit:posts_limit %}
+
+    <!-- Only output if the snippet is not the current post -->
+    {% if include.currentUrl and include.currentUrl != sub_article.url %}
+    <div class="small-12 medium-4 columns">
+
+        {% include templates/sub_article.html subarticle=sub_article %}
+
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

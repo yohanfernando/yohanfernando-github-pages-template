@@ -1,0 +1,5 @@
+{% if include.tag == 'The Latest' %}
+<span class="label round">{{ include.tag }}</span>
+{% else %}
+<span class="label secondary radius">{{ include.tag }}</span>
+{% endif %}

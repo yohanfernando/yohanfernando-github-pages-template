@@ -1,0 +1,9 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+@import 'default-site-scss/main-old';
+@import 'default-site-scss/base';
+@import 'default-site-scss/layout';
+@import 'default-site-scss/syntax-highlighting';

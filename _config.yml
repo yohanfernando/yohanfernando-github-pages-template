@@ -1,11 +1,13 @@
 # Site settings
 title:    Blog title
-baseurl: ""
+baseurl: "http://localhost:3000/"
 
 description: > #
  You can add a description to this section to explain the blog or your self.
 
-email:    enter@your-email.com
+site_owner: Your Name
+site_strapline: a cool strap line for the site
+site_owner_email:    youremail@domain.com
 url: "http://your-github-repo.github.io" # the base hostname & protocol for your site
 
 
@@ -19,6 +21,16 @@ markdown: kramdown
 
 permalink:  /blog/:title/
 paginate:   4
+
+excerpt_separator: <!-- more -->
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "post"
+      author: "Your Name"
 
 exclude: ['LICENSE.md','README.md','GemFile','Gemfile.lock',
           'package.json', 'bower.json','gulpfile.js',

@@ -118,8 +118,42 @@ posts with different types of components in them, which is what I did in the pos
   
   
   
-##### Now that I have my build environment setup, I can proceed to the development stage 
-and if you use my repo, so can you.  
+**Now that I have my build environment setup, I can proceed to the development stage 
+and if you use my repo, so can you.**
+  
+  
+#### Phase 4 - Design, structure & style the layouts
+    
+This is where you pretty much translate the 'ideas' you have in mind to html & css. Due to build 
+complexities with Jekyll, I highly recommend developing the layout using a static file and setup 
+`gulp` to copy the files to the `_site` folder & refresh the page everytime you make a change. 
+
+During this stage I simply created:  
+
+ * layout for home page  
+ * layout for single posts  
+ * page to display all the blog articles (if someone visit `../blog/` url of the site)  
+ 
+Once you complete hustling the pages, especially dreaded css, its time to create the layout based 
+on that. Best thing to do is stick to the current `_layouts` and `_include` folder structure. 
+Separate the html head section, the site header/navbar and the site footer in to different 
+includes, and insert them via the layout. For the home page, main body of the page will 
+remain in the index.html page and be inserted to the layout via `{{ content }}`. 
+
+On the single page layouts the only thing that get copied via `{{ content }}` is the body of the 
+blog post. Hence it is important to output the blog title, author, dates, share icons around the 
+content. In both home and single post pages, it is nicer to display a few of the 'next' articles 
+to attract visitors to read more.
+
+The blog index page will simply output a list of all the articles in the same way the next 
+articles were shown on home & single-post pages (pagination yet to be done!).
+
+I also created `_include` templates which I can reuse throughout the site, for example 
+to format date, display tags, show 'next' articles, add share icons etc and I highly recommend 
+you do the same too. 
+ 
+**Although you may use my template, it maybe worth adding a bit of your touch to make it 
+fully yours.**  
   
   
   
