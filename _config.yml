@@ -1,28 +1,32 @@
+# ---------------------------------------------------------------
 # Site settings
-title:    Blog title
-baseurl: ""
+# ---------------------------------------------------------------
 
+# AMEND_HERE >>> site.title will appear as the html head title
+title: Site title
+
+# AMEND_HERE >>> base url need to be defined if used as a website for a project, simply add the
+# name of your repository. If used as a user/organisation page this should be empty.
+baseurl: "/yohanfernando.github-pages.template"
+# For User/Organisation pages use empty baseurl
+# baseurl: ""
+
+# AMEND_HERE >>> This description will appear in the footer of your site
 description: > #
  You can add a description to this section to explain the blog or your self.
 
+# AMEND_HERE >>> Site owner details
 site_owner: Your Name
+site_owner_email: youremail@domain.com
 site_strapline: a cool strap line for the site
-site_owner_email:    youremail@domain.com
-url: "http://your-github-repo.github.io" # the base hostname & protocol for your site
 
+# AMEND_HERE >>> url of your site (where index.html) can be seen
+url: "http://your-github-repo.github.io/yohanfernando.github-pages.template"
 
-# Social media details
+# AMEND_HERE >>> Add your social media details
 twitter_username: twitter_handle
 github_username:  github_handle
 
-
-# Build settings
-markdown: kramdown
-
-permalink:  /blog/:title/
-paginate:   4
-
-excerpt_separator: <!-- more -->
 
 defaults:
   -
@@ -30,7 +34,26 @@ defaults:
       path: ""
     values:
       layout: "post"
-      author: "Your Name"
+      # AMEND_HERE >>> Add your name as the author
+      author: "Your name"
+
+
+# AMEND the _SCSS / variables >>>
+# GO TO '_SCSS' folder and open variables.scss to customise the template's
+# header background image, site owner thumbnail image (picture of your face/persona need to be
+# added in three sizes), font, font colours etc (more customisations will be added).
+
+
+# ---------------------------------------------------------------
+# Build settings - not to be edited
+# ---------------------------------------------------------------
+
+markdown: kramdown
+
+permalink:  /blog/:title/
+paginate:   4
+
+excerpt_separator: <!-- more -->
 
 exclude: ['LICENSE.md','README.md','GemFile','Gemfile.lock',
           'package.json', 'bower.json','gulpfile.js',

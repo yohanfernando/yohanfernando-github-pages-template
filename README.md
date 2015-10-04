@@ -1,15 +1,89 @@
-@yohanfernando blog ([view](http://yohanfernando.github.io/))
+Template of my blog ([view](http://yohanfernando.github.io/))
 ==================
 
 
 ## About
 
-This is the git repository for my personal blog hosted via GitHub Pages.  
+This is the template of my blog with my details stripped off and ready to 
+use/serve as a template for your Jekyll based GitHub pages site*.
 
-I am creating this blog using Jekyll and planning to release a post on completion detailing the 
-steps I went through which may help someone in future.  
+**Preview template: [http://yohanfernando.github.io/yohanfernando.github-pages.template/]
+(http://yohanfernando.github.io/yohanfernando.github-pages.template/)**
+ 
+\* Require very minimal modifications and may take max 15-20 minutes if you have all 
+the images ready.
 
-### What did I do so far…
+## How to use
+
+If you wish to use this template in your own site please follow the following steps.  
+
+**First and foremost check out the latest version from my `gh-pages` branch.** 
+
+Here onwards the workflow differs based on the type of site you create, follow appropriate 
+instructions to get you set up quickly as possible.
+ 
+#### a. User / Organisation GitHub Pages Site
+
+1. Rename the `gh-pages` branch to be `master` as github pages user/organisation sites 
+only get served from the `master` branch
+
+2. Open `_config.yml` file and add your details and site/url specific details to all the places 
+where I have noted as `AMEND_HERE`. 
+
+3. Set the value for `baseurl:` as an empty string (`baseurl: ""`) in `_config.yml` file.  
+
+4. Now go to **"Edit Demo Content & Go Live"** section  
+
+
+#### b. Project GitHub Pages Site
+
+1. Project pages are served from the `gh-pages` branch, so its essential that you keep the same
+branch name.
+
+2. Open `_config.yml` file and add your details and site/url specific details to all the places 
+where I have noted as `AMEND_HERE`. 
+
+3. Set the value for `baseurl:` as your repository name starting with a "`/`" 
+(e.g.- `baseurl: "/yohanfernando.github-pages.template"`) in `_config.yml` file.  
+
+4. Now go to **"Edit Demo Content & Go Live"** section  
+
+
+#### Edit Demo Content & Go Live
+
+1. Add header & author thumbnail images  
+    a. add the image you selected for your header background image to the `assets/images` folder    
+    b. add the author thumbnails (picture of you / your persona) to the `assets/images` folder.   
+    Thumbnails should be in three sizes, 400px x 400px, 300px x 300px and 200px x 200px.    
+    c. open `_scss/variables.scss`  
+    d. add the relative url (or the full url if hosted externally) of the image you selected for
+      your header background image to the `$header-background-image` variable 
+      (e.g. "`/assets/images/header.jpg`"), NB relative url should start with a "`/`" for 
+      user/organisation sites, and with "`/your-repo-name/`" for project pages sites.      
+    e. similarly add urls of the author thumbnails. The 400px x 400px should be added 
+    to `$site-owner-thumb-lg`, 300px x 300px should be added to `$site-owner-thumb-md` 
+    and 200px x 200px should be added to `$site-owner-thumb-sm variables`.   
+    f. if you wish to you can amend remaining variables (optional)  
+    
+2. Edit the about.md with your details, when adding content make sure to either;  
+    a. add an "excerpt" as the front matter  
+    b. or add the site excerpt_separator from where you want post to be cut off in the home page
+     (excerpt_separator is "`<!-- more -->`")
+
+3. Delete all the dummy posts form the "`_posts`" folder and I recommend adding 2-3 posts to start 
+with (optional to add).
+
+4. Edit the README.md file and add your own description 
+ 
+5. Set the `git origin` with your repository details and push changes to the `origin`.
+  
+6. Wola, your site is now LIVE :)
+
+7. Send me a message or a tweet ([@yohanfernando](http://twitter.com/yohanfernando)) to say you 
+used my template - just to put a smile on my face and as a reward for my hard work :).
+
+ 
+## How I developed the template
 
 #### Phase 1 - Setup Jekyll base blog
 
@@ -86,7 +160,8 @@ output folder ('_site') or rebuild the whole site.
 * First install following npm plugins to assist with the gulp setup  
 
     ```js
-        npm install --save-dev gulp gulp-autoprefixer gulp-notify gulp-rename gulp-sass browser-sync  
+        npm install --save-dev gulp gulp-autoprefixer gulp-rename gulp-sass 
+        gulp-open gulp-wait browser-sync  
     ```  
 
 * As I am going to be using Zurb's Foundation framework in the project, install that using 
