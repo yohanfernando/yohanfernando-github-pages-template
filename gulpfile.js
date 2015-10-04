@@ -19,7 +19,8 @@ var browserSync = require('browser-sync');
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var cp = require('child_process');
-var notify = require('gulp-notify');
+var open = require('gulp-open');
+var wait = require('gulp-wait');
 var rename = require('gulp-rename');
 
 /**
@@ -40,6 +41,15 @@ gulp.task('copy-libraries', function () {
 });
 
 /**
+ * This will copy static dev files to _site folder - only use in development and via `gulp develop`
+ */
+gulp.task('copy-static-dev-files', function () {
+    return gulp.src(['_dev_static_files/dev-home.html', '_dev_static_files/dev-single-post.html'])
+        .pipe(gulp.dest('./_site/'));
+});
+
+
+/**
  * Build the Jekyll Site using 'jekyll build' command
  */
 gulp.task('jekyll-build', ['copy-libraries'], function (done) {
@@ -51,9 +61,31 @@ gulp.task('jekyll-build', ['copy-libraries'], function (done) {
 });
 
 /**
+ * Build & serve the site using 'jekyll serve' command
+ * Also opens up the site in http://localhost:4000 after 10 seconds (hopefully once build complete)
+ */
+gulp.task('jekyll-serve', ['copy-libraries'], function (done) {
+
+    cp.spawn('jekyll', ['serve'], {stdio: 'inherit'})
+        .on('close', done);
+
+    /*
+        This will wait for 10 seconds before opening the web browser to give ample
+        time to complete Jekyll build
+     */
+    gulp.src('')
+        .pipe(wait(10000))
+        .pipe(open({uri: 'http://localhost:4000'}));
+});
+
+/**
  * Call jekyll-build to rebuild the site and reload the pages via browser-sync.
  */
 gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+
+    //copy static dev files once jekyll build is completed
+    gulp.run("copy-static-dev-files");
+
     browserSync.reload();
 });
 
@@ -72,23 +104,9 @@ gulp.task('scss', function () {
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
         .pipe(rename('style.css'))
         .pipe(gulp.dest('_site/assets/css/'))
-        .pipe(gulp.dest('assets/css/'))//added to assist in development auto complete
-        //.pipe(browserSync.reload({stream: true}))
-        //.pipe(notify({
-        //    message: "SCSS files compiled & injected to '_site/assets/css/' folder."
-        //}))
-        ;
+        .pipe(gulp.dest('assets/css/'));//added to assist in development auto complete
 });
 
-gulp.task('copy-dev-files', function () {
-    return gulp.src(['./dev-home.html','./dev-single-post.html'])
-        .pipe(gulp.dest('./_site/'))
-        //.pipe(browserSync.reload({stream: true}))
-        //.pipe(notify({
-        //    message: "index-dev compiled & injected."
-        //}))
-        ;
-});
 
 /**
  * Watch scss files for changes, recompile and save & inject
@@ -96,9 +114,13 @@ gulp.task('copy-dev-files', function () {
  */
 gulp.task('watch', ['jekyll-build'], function () {
 
+    //copy static dev files once jekyll build is completed
+    gulp.run("copy-static-dev-files");
+
+    //initiate gulp watch for browser-sync
     gulp.watch(['_scss/**/*.scss'], ['scss']).on('change', browserSync.reload);
-    gulp.watch(['dev-home.html','dev-single-post.html'], ['copy-dev-files']).on('change', browserSync.reload);
-    gulp.watch(['index.html', '_config.yml', 'blog/**','_includes/**', '_layouts/**', '**.md'],
+    gulp.watch(['_dev_static_files/**'], ['copy-dev-files']).on('change', browserSync.reload);
+    gulp.watch(['index.html', '_config.yml', 'blog/**', '_includes/**', '_layouts/**', '**.md'],
         ['jekyll-rebuild']).on('change', browserSync.reload);
 });
 
@@ -107,7 +129,7 @@ gulp.task('watch', ['jekyll-build'], function () {
  *
  * This will watch files for any changes as well.
  */
-gulp.task('serve', ['watch'], function () {
+gulp.task('develop', ['watch'], function () {
 
     browserSync.init({
         injectChanges: true,
@@ -115,6 +137,15 @@ gulp.task('serve', ['watch'], function () {
     });
 
 });
+
+/**
+ * Execute `jekyll serve` which can be used when writing articles & editing the jekyll site. This
+ * will use default jekyll watch and insert edited files to the `_site` folder structure, however
+ * wont refresh the page.
+ *
+ * If using the static files to develop its best to use `gulp develop`
+ */
+gulp.task('serve', ['jekyll-serve']);
 
 /**
  * Helper command to build jekyll site

@@ -2,7 +2,7 @@
     <div class="darken"></div>
     <div class="row">
         <div class="small-12 column">
-            <a href="/">
+            <a href="{{ '/' | prepend: site.baseurl }}">
                 <div class="row">
                     <div class="show-for-small-only small-2 small-centered columns author-portrait-circle-lg">
                     </div>
@@ -10,13 +10,13 @@
             </a>
 
             <div class="row">
-                <a href="/">
+                <a href="{{ '/' | prepend: site.baseurl }}">
                     <div class="show-for-medium-up medium-1 columns author-portrait-circle-md">
                     </div>
                 </a>
 
                 <div class="medium-10 end columns small-text-center medium-text-left">
-                    <a href="/">
+                    <a href="{{ '/' | prepend: site.baseurl }}">
                         <h2>{{ site.site_owner }}</h2>
                     </a>
 
@@ -24,7 +24,7 @@
                         <small>{{ site.site_strapline }}</small>
                     </h3>
                     <h5>
-                        <a href="/about">about</a>
+                        <a href="{{ '/about' | prepend: site.baseurl }}">about</a>
                         | <a href="#">cv</a>
                         <span class="show-social-icons-inline">
                             |

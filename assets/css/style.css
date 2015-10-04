@@ -4,9 +4,6 @@
 
   This would import all the related partials to compile the css file for the site.
 */
-/*!
- *  hi there 中文注释 a
- */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -374,8 +371,8 @@ th {
 /*
   Copyright 2015, Yohan Fernando (@yohanfernando)
 
-  This contains all the variables I have used in the site which you can alter to get the desired visual
-  look & feel.
+  This contains all the variables I have used in the site which you can alter to get the
+  desired visual look & feel.
 */
 meta.foundation-version {
   font-family: "/5.5.2/"; }
@@ -8916,16 +8913,6 @@ th.hide-for-touch {
 /*
   Copyright 2015, Yohan Fernando (@yohanfernando)
 
-  This contains all the scss variables used in the template.
-*/
-/*
-  Copyright 2015, Yohan Fernando (@yohanfernando)
-
-  This contains all the scss customisations to the footer section.
-*/
-/*
-  Copyright 2015, Yohan Fernando (@yohanfernando)
-
   This contains all the scss customisations to the header section.
 */
 .header {
@@ -8990,13 +8977,13 @@ th.hide-for-touch {
   width: 6em; }
 
 .author-portrait-circle-md {
-  background: url("http://placehold.it/400x400&text=[FACE]") no-repeat center center;
+  background: url("http://placehold.it/300x300&text=[FACE]") no-repeat center center;
   border-radius: 2em;
   height: 4em;
   width: 4em; }
 
 .author-portrait-circle-sm {
-  background: url("http://placehold.it/400x400&text=[FACE]") no-repeat center center;
+  background: url("http://placehold.it/200x200&text=[FACE]") no-repeat center center;
   border-radius: 1em;
   height: 2em;
   width: 2em; }

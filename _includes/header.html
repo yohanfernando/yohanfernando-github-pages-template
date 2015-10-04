@@ -3,14 +3,14 @@
     <div class="row">
         <div class="small-12 column">
             <div class="row">
-                <a href="/">
+                <a href="{{ '/' | prepend: site.baseurl }}">
                     <div class="small-2 small-centered column author-portrait-circle-lg">
                     </div>
                 </a>
             </div>
             <div class="row">
                 <div class="small-12 small-centered column">
-                    <a href="/">
+                    <a href="{{ '/' | prepend: site.baseurl }}">
                         <h2>{{ site.site_owner }}</h2>
                     </a>
 
@@ -18,7 +18,7 @@
                         <small>{{ site.site_strapline }}</small>
                     </h3>
 
-                    <h5><a href="/about">about</a> | <a href="#">cv</a></h5>
+                    <h5><a href="{{ '/about' | prepend: site.baseurl }}">about</a> | <a href="#">cv</a></h5>
                 </div>
             </div>
         </div>

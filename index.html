@@ -32,7 +32,7 @@ layout: home
     <div class="small-12 large-4 large-offset-1 columns panel about-me">
         {% for p in site.html_pages %}
         {% if p.url == '/about/' %}
-        <a href="{{p.url}}" target="_blank">
+        <a href="{{ p.url | prepend: site.baseurl }}">
             <h3>{{ p.title }}</h3>
         </a>
 
