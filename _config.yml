@@ -7,7 +7,7 @@ title: Site title
 
 # AMEND_HERE >>> base url need to be defined if used as a website for a project, simply add the
 # name of your repository. If used as a user/organisation page this should be empty.
-baseurl: "/yohanfernando.github-pages.template"
+baseurl: "/yohanfernando-github-pages-template"
 # For User/Organisation pages use empty baseurl
 # baseurl: ""
 
