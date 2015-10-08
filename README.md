@@ -7,8 +7,8 @@ Template of my blog ([view](http://yohanfernando.github.io/))
 This is the template of my blog with my details stripped off and ready to 
 use/serve as a template for your Jekyll based GitHub pages site*.
 
-**Preview template: [http://yohanfernando.github.io/yohanfernando.github-pages.template/]
-(http://yohanfernando.github.io/yohanfernando.github-pages.template/)**
+**Preview template: [http://yohanfernando.github.io/yohanfernando-github-pages-template/]
+(http://yohanfernando.github.io/yohanfernando-github-pages-template/)**
  
 \* Require very minimal modifications and may take max 15-20 minutes if you have all 
 the images ready.
@@ -44,7 +44,8 @@ branch name.
 where I have noted as `AMEND_HERE`. 
 
 3. Set the value for `baseurl:` as your repository name starting with a "`/`" 
-(e.g.- `baseurl: "/yohanfernando.github-pages.template"`) in `_config.yml` file.  
+(e.g.- for this template repository its `baseurl: "/yohanfernando-github-pages-template"`) 
+in `_config.yml` file.  
 
 4. Now go to **"Edit Demo Content & Go Live"** section  
 
@@ -57,21 +58,24 @@ where I have noted as `AMEND_HERE`.
     Thumbnails should be in three sizes, 400px x 400px, 300px x 300px and 200px x 200px.    
     c. open `_scss/variables.scss`  
     d. add the relative url (or the full url if hosted externally) of the image you selected for
-      your header background image to the `$header-background-image` variable 
-      (e.g. "`/assets/images/header.jpg`"), NB relative url should start with a "`/`" for 
-      user/organisation sites, and with "`/your-repo-name/`" for project pages sites.      
+      your header background image to the `$header-background-image` variable.
+      Url should be relative to the 'assets/css/style.css', e.g. "`../images/header.jpg`", 
+      i.e. - relative url should start with a "`../images/`" followed by the image name.      
     e. similarly add urls of the author thumbnails. The 400px x 400px should be added 
     to `$site-owner-thumb-lg`, 300px x 300px should be added to `$site-owner-thumb-md` 
     and 200px x 200px should be added to `$site-owner-thumb-sm variables`.   
     f. if you wish to you can amend remaining variables (optional)  
+    
+    Note: getting the author's face/persona to center may take a few attempts, hence worth 
+    testing locally before committing (refer developer guide below for how-to).  
     
 2. Edit the about.md with your details, when adding content make sure to either;  
     a. add an "excerpt" as the front matter  
     b. or add the site excerpt_separator from where you want post to be cut off in the home page
      (excerpt_separator is "`<!-- more -->`")
 
-3. Delete all the dummy posts form the "`_posts`" folder and I recommend adding 2-3 posts to start 
-with (optional to add).
+3. Delete all the dummy posts form the "`_posts`" folder and I recommend adding 3-4 posts to start 
+with (optional to add, however may break the layout otherwise).
 
 4. Edit the README.md file and add your own description 
  
