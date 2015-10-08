@@ -22,6 +22,7 @@ var cp = require('child_process');
 var open = require('gulp-open');
 var wait = require('gulp-wait');
 var rename = require('gulp-rename');
+var del = require('del');
 
 /**
  * Copy bower based libraries to appropriate folders.
@@ -37,6 +38,9 @@ gulp.task('copy-libraries', function () {
 
     gulp.src(['./_bower_components/font-awesome/fonts/**'])
         .pipe(gulp.dest('assets/fonts'));
+
+    //Delete the css file used as development time auto-complete as it conflicts
+    del(['./assets/css/style.css']);
 
 });
 
