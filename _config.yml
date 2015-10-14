@@ -20,9 +20,9 @@ site_owner: Your Name
 site_owner_email: youremail@domain.com
 site_strapline: a cool strap line for the site
 
-# AMEND_HERE >>> url of your site (where index.html) can be seen
-# e.g. - url: "http://your-github-repo.github.io/yohanfernando.github-pages.template"
-url: "http://yohanfernando.github.io/yohanfernando-github-pages-template"
+# AMEND_HERE >>> url for your base repo (i.e.- username.github.io)
+# e.g. - url: "http://your-github-repo.github.io"
+url: "http://yohanfernando.github.io"
 
 # AMEND_HERE >>> Add your social media details
 twitter_username: twitter_handle
