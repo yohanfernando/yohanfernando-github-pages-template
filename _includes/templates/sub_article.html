@@ -14,10 +14,8 @@
 <div class="separator"></div>
 
 <p>
-    {% if include.subarticle.excerpt %}
-    {{ include.subarticle.excerpt }}
-    {% elsif include.subarticle.content contains "<!-- more -->" %}
-    {{ include.subarticle.content | split:'<!-- more -->' | first }}
+    {% if include.subarticle.content contains "<!-- more -->" %}
+    {{ include.subarticle.excerpt | strip_html }}
     {% else %}
     {{ include.subarticle.content | strip_html | truncatewords:30 }}
     {% endif %}
