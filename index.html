@@ -37,11 +37,17 @@ layout: home
         </a>
 
         <div class="separator"></div>
-        {% if p.content contains "<!-- more -->" %}
-        {{ p.excerpt | strip_html }}
+        {% if p.excerpt %}
+        {{ p.excerpt }}
+        {% elsif p.content contains "<!-- more -->" %}
+        {{ p.content | split:'<!-- more -->' | first }}
         {% else %}
         {{ p.content | strip_html | truncatewords:100 }}
         {% endif %}
+
+        <p class="read-about-me">
+            <a href="{{ p.url | prepend: site.baseurl }}">Read more...</a>
+        </p>
         {% endif %}
         {% endfor %}
     </div>
