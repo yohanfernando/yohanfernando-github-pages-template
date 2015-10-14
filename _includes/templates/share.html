@@ -9,8 +9,10 @@
 {% endif %}
 
 <!-- Set share text -->
-{% if include.post.content contains "<!-- more -->" %}
-{% assign share_text = include.post.excerpt | strip_html %}
+{% if include.post.excerpt %}
+{% assign share_text = include.post.excerpt | strip_html | truncatewords:30 %}
+{% elsif include.post.content contains "<!-- more -->" %}
+{{ include.post.content | split:'<!-- more -->' | first  | strip_html | truncatewords:30 }}
 {% elsif include.post.content %}
 {% assign share_text = include.post.content | strip_html | truncatewords:30 %}
 {% else %}
