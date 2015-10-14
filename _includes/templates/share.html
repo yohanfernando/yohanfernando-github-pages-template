@@ -1,5 +1,5 @@
 <!-- Set the share url -->
-{% assign share_url = include.post.url | prepend: site.baseurl %}
+{% assign share_url = include.post.url | prepend: site.baseurl | prepend: site.url %}
 
 <!-- Set share title -->
 {% if include.post.title %}
@@ -11,8 +11,6 @@
 <!-- Set share text -->
 {% if include.post.excerpt %}
 {% assign share_text = include.post.excerpt | strip_html | truncatewords:30 %}
-{% elsif include.post.content contains "<!-- more -->" %}
-{{ include.post.content | split:'<!-- more -->' | first  | strip_html | truncatewords:30 }}
 {% elsif include.post.content %}
 {% assign share_text = include.post.content | strip_html | truncatewords:30 %}
 {% else %}
